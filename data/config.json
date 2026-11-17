@@ -1,0 +1,18 @@
+{
+ "nichos": [
+  {"slug": "casa", "titulo": "Casa & Cozinha"},
+  {"slug": "beleza", "titulo": "Beleza & Cuidado"},
+  {"slug": "tecnologia", "titulo": "Tecnologia & Celular"},
+  {"slug": "carro", "titulo": "Carro & Ferramentas"}
+ ],
+ "sazonais": [
+  {"slug": "natal", "titulo": "Natal", "inicio": "11-01", "fim": "12-26"},
+  {"slug": "volta-aulas", "titulo": "Volta às Aulas", "inicio": "01-10", "fim": "02-15"},
+  {"slug": "dia-maes", "titulo": "Dia das Mães", "inicio": "04-20", "fim": "05-12"},
+  {"slug": "dia-namorados", "titulo": "Dia dos Namorados", "inicio": "05-25", "fim": "06-12"},
+  {"slug": "dia-pais", "titulo": "Dia dos Pais", "inicio": "07-25", "fim": "08-10"},
+  {"slug": "dia-criancas", "titulo": "Dia das Crianças", "inicio": "09-25", "fim": "10-12"},
+  {"slug": "black-friday", "titulo": "Black Friday", "inicio": "11-20", "fim": "11-30"}
+ ],
+ "cupons": []
+}

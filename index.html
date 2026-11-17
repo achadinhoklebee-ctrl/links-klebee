@@ -1,31 +1,78 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="logo.png"><title>Achadinho Klebee – links dos produtos</title>
+<link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="logo.png">
+<title>Achadinho Klebee – links dos produtos</title>
 <style>
-:root{--bg:#0B1230;--card:#fff;--ac:#EE4D2D;--tx:#111}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,Arial,sans-serif;color:#fff}
-main{max-width:480px;margin:0 auto;padding:20px 16px 40px}
-img.logo{display:block;width:120px;height:120px;border-radius:50%;margin:6px auto 10px;box-shadow:0 0 0 3px #EE4D2D,0 4px 14px #0008}h1{font-size:20px;text-align:center;margin:8px 0 4px}p.sub{text-align:center;margin:0 0 18px;opacity:.8;font-size:14px}
-a.item{display:flex;align-items:center;gap:12px;background:var(--card);color:var(--tx);text-decoration:none;border-radius:14px;padding:14px 16px;margin:10px 0;font-weight:700;box-shadow:0 2px 8px #0005}
-a.item b{background:var(--ac);color:#fff;border-radius:50%;min-width:32px;height:32px;display:grid;place-items:center}
-a.item span{flex:1}a.item i{font-style:normal;color:var(--ac)}
-h2{font-size:15px;margin:26px 0 6px;opacity:.9}
-a.mais{display:block;text-align:center;color:#fff;opacity:.75;margin:22px 0 0;font-size:14px;text-decoration:underline}#vazio{text-align:center;opacity:.8}
+:root{--bg:#0B1230;--card:#fff;--ac:#EE4D2D;--ac2:#FF8A3D;--tx:#111;--mut:#9aa3c7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,Arial,sans-serif;color:#fff;-webkit-tap-highlight-color:transparent}
+main{max-width:480px;margin:0 auto;padding:18px 16px 48px}
+img.logo{display:block;width:104px;height:104px;border-radius:50%;margin:4px auto 8px;box-shadow:0 0 0 3px var(--ac),0 4px 14px #0008}
+h1{font-size:20px;text-align:center;margin:6px 0 2px}p.sub{text-align:center;margin:0 0 16px;opacity:.8;font-size:14px}
+h2{font-size:15px;margin:22px 0 8px;opacity:.9}
+a.item{display:flex;align-items:center;gap:12px;background:var(--card);color:var(--tx);text-decoration:none;border-radius:14px;padding:10px 14px 10px 10px;margin:9px 0;font-weight:700;box-shadow:0 2px 8px #0005}
+a.item .th{width:60px;height:60px;border-radius:10px;object-fit:cover;background:#eee;flex:none}
+a.item .num{background:var(--ac);color:#fff;border-radius:10px;width:60px;height:60px;display:grid;place-items:center;font-size:20px;flex:none}
+a.item span{flex:1;font-size:15px;line-height:1.25}a.item i{font-style:normal;color:var(--ac);white-space:nowrap}
+a.mais{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px 0 6px;padding:14px 18px;border-radius:18px;text-decoration:none;color:#fff;font-weight:800;font-size:17px;letter-spacing:.3px;background:linear-gradient(135deg,var(--ac),var(--ac2));box-shadow:0 6px 18px #ee4d2d66}
+a.mais img{width:46px;height:46px;border-radius:50%;border:2px solid #fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+a.nicho{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:#fff;border-radius:18px;padding:18px 10px 14px;text-align:center;font-weight:800;font-size:15px;box-shadow:0 4px 14px #0006}
+a.nicho svg{width:54px;height:54px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+a.nicho small{font-weight:600;opacity:.85;font-size:12px}
+a.nicho.sazonal{grid-column:1/3;flex-direction:row;justify-content:center;gap:14px;font-size:18px}
+.busca{width:100%;padding:13px 16px;border-radius:14px;border:0;font-size:16px;margin:4px 0 6px;outline:0}
+a.voltar{display:inline-block;color:var(--mut);text-decoration:none;font-size:14px;margin:2px 0 8px}
+.cupom{display:block;background:#142055;border:1px dashed #5b6bd6;border-radius:14px;padding:12px 14px;margin:8px 0;color:#fff;text-decoration:none;font-weight:700}
+.cupom small{display:block;font-weight:500;opacity:.8;margin-top:2px}
+#vazio{text-align:center;opacity:.8;margin-top:18px}
 </style></head><body><main>
-<img class="logo" src="logo.png" alt="Achadinho Klebee"><h1>Achadinho Klebee</h1><p class="sub">Toque no produto para abrir na Shopee</p>
-<div id="lista"></div><div id="vazio" hidden>Em breve os links aparecem aqui.</div>
+<img class="logo" src="logo.png" alt="Achadinho Klebee"><h1>Achadinho Klebee</h1>
+<p class="sub" id="sub"></p>
+<div id="app"></div><div id="vazio" hidden>Em breve os links aparecem aqui.</div>
 <script>
-fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()).then(d=>{
-  const P=new URLSearchParams(location.search),q=P.get('a'),todos=P.has('todos');
-  const L=d.achadinhos||[],el=document.getElementById('lista');
-  if(!L.length){document.getElementById('vazio').hidden=false;return}
-  const itens=a=>a.itens.forEach((it,i)=>{const x=document.createElement('a');x.className='item';x.href=it.link;x.rel='noopener';
-    x.innerHTML='<b>'+(i+1)+'</b><span></span><i>Ver ▸</i>';x.querySelector('span').textContent=it.nome;el.append(x)});
-  if(todos){const h=document.createElement('h2');h.textContent='Todos os achadinhos';el.append(h);
-    L.forEach((a,n)=>{const x=document.createElement('a');x.className='item';x.href='?a='+encodeURIComponent(a.id);
-      x.innerHTML='<b>'+(L.length-n)+'</b><span></span><i>Abrir ▸</i>';x.querySelector('span').textContent=a.titulo+' – '+a.itens.slice(0,2).map(i=>i.nome).join(', ')+'…';el.append(x)});return}
-  const sel=(q&&L.find(x=>x.id===q))||L[0];itens(sel);
-  if(L.length>1){const m=document.createElement('a');m.className='mais';m.href='?todos';m.textContent='Ver outros achadinhos';el.append(m)}
+const ICONES={
+casa:'<svg viewBox="0 0 48 48"><path d="M5 23 24 7l19 16"/><path d="M10 20v22h28V20"/><path d="M20 42V30h8v12"/></svg>',
+beleza:'<svg viewBox="0 0 48 48"><path d="M22 6l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/><path d="M38 30l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg>',
+tecnologia:'<svg viewBox="0 0 48 48"><rect x="13" y="4" width="22" height="40" rx="4"/><path d="M21 38h6"/><path d="M13 12h22"/></svg>',
+carro:'<svg viewBox="0 0 48 48"><path d="M5 31l4-11a4 4 0 0 1 4-3h22a4 4 0 0 1 4 3l4 11v8H5z"/><circle cx="14" cy="39" r="4"/><circle cx="34" cy="39" r="4"/><path d="M9 26h30"/></svg>',
+natal:'<svg viewBox="0 0 48 48"><path d="M24 4l-9 13h6L11 30h8L7 42h34L29 30h8L27 17h6z"/><path d="M24 42v4"/></svg>',
+sazonal:'<svg viewBox="0 0 48 48"><path d="M24 4l5 12 13 1-10 9 3 13-11-7-11 7 3-13L6 17l13-1z"/></svg>'};
+const COR={casa:'#E8590C,#FFA94D',beleza:'#C2255C,#F783AC',tecnologia:'#1971C2,#4DABF7',carro:'#2B8A3E,#69DB7C',natal:'#C92A2A,#2F9E44'};
+const norm=s=>(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const el=(h)=>{const d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild};
+const Q=new URLSearchParams(location.search),app=document.getElementById('app'),sub=document.getElementById('sub');
+function hoje(){const d=new Date();return (d.getMonth()+1)*100+d.getDate()}
+function mmdd(s){const [m,d]=s.split('-').map(Number);return m*100+d}
+function ativo(s){const a=mmdd(s.inicio),b=mmdd(s.fim);return a<=b?(hoje()>=a&&hoje()<=b):(hoje()>=a||hoje()<=b)}
+function itemHTML(it,i){const th=it.imagem?`<img class="th" loading="lazy" referrerpolicy="no-referrer" src="${it.imagem}" alt="">`:`<div class="num">${i+1}</div>`;
+  return `<a class="item" href="${it.link}" rel="noopener">${th}<span></span><i>Ver ▸</i></a>`}
+function lista(its,alvo){its.forEach((it,i)=>{const x=el(itemHTML(it,i));x.querySelector('span').textContent=it.nome;alvo.append(x)})}
+Promise.all([fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()),fetch('data/config.json?'+Date.now()).then(r=>r.json()).catch(()=>({}))]).then(([D,C])=>{
+  const A=D.achadinhos||[],NICHOS=C.nichos||[],SAZ=(C.sazonais||[]).find(ativo);
+  const todos=[];A.forEach(a=>a.itens.forEach(it=>{if(!todos.some(t=>t.link===it.link))todos.push(it)}));
+  const doNicho=s=>todos.filter(t=>t.nicho===s).sort((a,b)=>norm(a.nome).localeCompare(norm(b.nome)));
+  if(Q.has('n')){                                   // ---- tela de um nicho: todos os produtos, A-Z, com busca
+    const s=Q.get('n'),n=[...NICHOS,...(C.sazonais||[])].find(x=>x.slug===s)||{titulo:s};
+    sub.textContent=n.titulo;app.append(el('<a class="voltar" href="?nichos">← Todos os nichos</a>'));
+    const b=el('<input class="busca" type="search" placeholder="Buscar produto…" autocomplete="off">');app.append(b);
+    const box=el('<div></div>');app.append(box);const its=doNicho(s);
+    const pinta=()=>{box.innerHTML='';const q=norm(b.value);const f=its.filter(t=>norm(t.nome).includes(q));
+      if(!f.length){box.append(el('<p id="vazio">'+(its.length?'Nada encontrado.':'Em breve novos produtos aqui.')+'</p>'))}else lista(f,box)};
+    b.addEventListener('input',pinta);pinta();return}
+  if(Q.has('nichos')){                              // ---- tela dos nichos (4 fixos + 1 sazonal) + cupons
+    sub.textContent='Escolha o que você procura';app.append(el('<a class="voltar" href="./">← Voltar</a>'));
+    const g=el('<div class="grid"></div>');
+    const card=(n,saz)=>{const c=(COR[n.slug]||'#E8590C,#FF8A3D').split(',');const q=doNicho(n.slug).length;
+      return el(`<a class="nicho${saz?' sazonal':''}" href="?n=${n.slug}" style="background:linear-gradient(135deg,${c[0]},${c[1]})">${ICONES[n.slug]||ICONES.sazonal}<div>${n.titulo}<br><small>${q} produto${q===1?'':'s'}</small></div></a>`)};
+    NICHOS.forEach(n=>g.append(card(n,false)));if(SAZ)g.append(card(SAZ,true));app.append(g);
+    const cup=(C.cupons||[]).filter(c=>!c.ate||c.ate>=new Date().toISOString().slice(0,10));
+    if(cup.length){app.append(el('<h2>🎟️ Cupons de hoje</h2>'));cup.forEach(c=>{const x=el(`<a class="cupom" href="${c.link}" rel="noopener"><span></span><small></small></a>`);
+      x.querySelector('span').textContent=c.titulo;x.querySelector('small').textContent=c.ate?('Válido até '+c.ate.split('-').reverse().join('/')):'Resgate antes de comprar';app.append(x)})}
+    return}
+  if(!A.length){document.getElementById('vazio').hidden=false;return}   // ---- tela do achadinho
+  const q=Q.get('a'),sel=(q&&A.find(x=>x.id===q))||A[0];
+  sub.textContent='Toque no produto para abrir na Shopee';lista(sel.itens,app);
+  app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));
 }).catch(()=>{document.getElementById('vazio').hidden=false});
 </script></main></body></html>
