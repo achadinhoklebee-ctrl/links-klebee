@@ -11,20 +11,21 @@ a.item{display:flex;align-items:center;gap:12px;background:var(--card);color:var
 a.item b{background:var(--ac);color:#fff;border-radius:50%;min-width:32px;height:32px;display:grid;place-items:center}
 a.item span{flex:1}a.item i{font-style:normal;color:var(--ac)}
 h2{font-size:15px;margin:26px 0 6px;opacity:.9}
-#vazio{text-align:center;opacity:.8}
+a.mais{display:block;text-align:center;color:#fff;opacity:.75;margin:22px 0 0;font-size:14px;text-decoration:underline}#vazio{text-align:center;opacity:.8}
 </style></head><body><main>
 <img class="logo" src="logo.png" alt="Achadinho Klebee"><h1>Achadinho Klebee</h1><p class="sub">Toque no produto para abrir na Shopee</p>
 <div id="lista"></div><div id="vazio" hidden>Em breve os links aparecem aqui.</div>
 <script>
 fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()).then(d=>{
-  const q=new URLSearchParams(location.search).get('a');
-  const L=d.achadinhos||[];let sel=q?L.filter(x=>x.id===q):L.slice(0,1);
-  const rest=L.filter(x=>!sel.includes(x));const el=document.getElementById('lista');
+  const P=new URLSearchParams(location.search),q=P.get('a'),todos=P.has('todos');
+  const L=d.achadinhos||[],el=document.getElementById('lista');
   if(!L.length){document.getElementById('vazio').hidden=false;return}
-  const bloco=(a,t)=>{if(t){const h=document.createElement('h2');h.textContent=a.titulo;el.append(h)}
-    a.itens.forEach((it,i)=>{const x=document.createElement('a');x.className='item';x.href=it.link;x.rel='noopener';
-      x.innerHTML='<b>'+(i+1)+'</b><span></span><i>Ver ▸</i>';x.querySelector('span').textContent=it.nome;el.append(x)})};
-  sel.forEach(a=>bloco(a,false));
-  if(rest.length){const h=document.createElement('h2');h.textContent='Achadinhos anteriores';el.append(h);rest.forEach(a=>bloco(a,true))}
+  const itens=a=>a.itens.forEach((it,i)=>{const x=document.createElement('a');x.className='item';x.href=it.link;x.rel='noopener';
+    x.innerHTML='<b>'+(i+1)+'</b><span></span><i>Ver ▸</i>';x.querySelector('span').textContent=it.nome;el.append(x)});
+  if(todos){const h=document.createElement('h2');h.textContent='Todos os achadinhos';el.append(h);
+    L.forEach((a,n)=>{const x=document.createElement('a');x.className='item';x.href='?a='+encodeURIComponent(a.id);
+      x.innerHTML='<b>'+(L.length-n)+'</b><span></span><i>Abrir ▸</i>';x.querySelector('span').textContent=a.titulo+' – '+a.itens.slice(0,2).map(i=>i.nome).join(', ')+'…';el.append(x)});return}
+  const sel=(q&&L.find(x=>x.id===q))||L[0];itens(sel);
+  if(L.length>1){const m=document.createElement('a');m.className='mais';m.href='?todos';m.textContent='Ver outros achadinhos';el.append(m)}
 }).catch(()=>{document.getElementById('vazio').hidden=false});
 </script></main></body></html>
