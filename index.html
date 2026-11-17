@@ -70,7 +70,18 @@ Promise.all([fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()),fetch('
     if(cup.length){app.append(el('<h2>🎟️ Cupons de hoje</h2>'));cup.forEach(c=>{const x=el(`<a class="cupom" href="${c.link}" rel="noopener"><span></span><small></small></a>`);
       x.querySelector('span').textContent=c.titulo;x.querySelector('small').textContent=c.ate?('Válido até '+c.ate.split('-').reverse().join('/')):'Resgate antes de comprar';app.append(x)})}
     return}
-  if(!A.length){document.getElementById('vazio').hidden=false;return}   // ---- tela do achadinho
+  if(!A.length){document.getElementById('vazio').hidden=false;return}
+  if(!Q.has('a')){                                   // ---- início: o que foi postado hoje / recentemente
+    const rec=A.filter(a=>a.postado).sort((x,y)=>y.postado.localeCompare(x.postado));
+    if(rec.length){
+      const hojeStr=new Date().toLocaleDateString('sv'),vis=[];
+      rec.forEach(a=>a.itens.forEach(it=>{if(vis.length<10&&!vis.some(v=>v.it.link===it.link))vis.push({it,hoje:a.postado.slice(0,10)===hojeStr})}));
+      const h=vis.filter(v=>v.hoje).map(v=>v.it),o=vis.filter(v=>!v.hoje).map(v=>v.it);
+      sub.textContent='Toque no produto do vídeo que você viu';
+      if(h.length){app.append(el('<h2>🔥 Postados hoje</h2>'));lista(h,app)}
+      if(o.length){app.append(el('<h2>Postados recentemente</h2>'));lista(o,app)}
+      app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));return}
+  }
   const q=Q.get('a'),sel=(q&&A.find(x=>x.id===q))||A[0];
   sub.textContent='Toque no produto para abrir na Shopee';lista(sel.itens,app);
   app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));
