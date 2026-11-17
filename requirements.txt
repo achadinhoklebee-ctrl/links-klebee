@@ -1,8 +1,0 @@
-fastapi
-uvicorn
-edge-tts
-Pillow<10.0.0
-moviepy==1.0.3
-numpy
-yt-dlp
-requests
