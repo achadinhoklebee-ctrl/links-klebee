@@ -82,7 +82,15 @@ Promise.all([fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()),fetch('
       if(o.length){app.append(el('<h2>Postados recentemente</h2>'));lista(o,app)}
       app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));return}
   }
-  const q=Q.get('a'),sel=(q&&A.find(x=>x.id===q))||A[0];
+  const q=Q.get('a');
+  if(q==='atual'||q==='ach-mwimtur0'){               // 'atual' = achadinho mais recente (sem precisar mexer no Zorcha); o código antigo também cai aqui
+    const ac=A.filter(a=>/^ach-/.test(a.id)&&a.postado).sort((x,y)=>y.postado.localeCompare(x.postado));
+    if(ac.length){
+      sub.textContent='Toque no produto do vídeo que você viu';
+      ac.slice(0,3).forEach((a,i)=>{app.append(el('<h2>'+(i?'Achadinho anterior: ':'🔥 Mais recente: ')+(a.titulo||'')+'</h2>'));lista(a.itens,app)});
+      app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));return}
+  }
+  const sel=(q&&A.find(x=>x.id===q))||A[0];
   sub.textContent='Toque no produto para abrir na Shopee';lista(sel.itens,app);
   app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));
 }).catch(()=>{document.getElementById('vazio').hidden=false});
