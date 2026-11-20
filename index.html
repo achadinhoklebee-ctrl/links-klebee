@@ -91,7 +91,7 @@ Promise.all([fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()),fetch('
     const cur=ac.find(a=>a.id===q)||ac[0];
     sub.textContent='Toque no vídeo que você viu';
     const f=el('<div class="faixa"></div>');
-    ac.slice(0,4).forEach(a=>{const c=el('<a class="capa'+(a.id===cur.id?' sel':'')+'" href="?a='+a.id+'"><img src="capas/'+a.id+'.jpg" alt="" onerror="this.remove()"><small></small></a>');
+    ac.slice(0,4).forEach(a=>{const c=el('<a class="capa'+(a.id===cur.id?' sel':'')+'" href="?a='+a.id+'"><img src="capas/'+a.id+'.jpg" alt="" onerror="this.parentNode.remove()"><small></small></a>');
       c.querySelector('small').textContent=(a.titulo||'Achadinho').slice(0,28);f.append(c)});
     app.append(f);
     app.append(el('<h2>🔥 '+(cur.titulo||'Achadinho')+'</h2>'));lista(cur.itens,app);
