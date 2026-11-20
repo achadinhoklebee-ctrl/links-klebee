@@ -82,8 +82,9 @@ Promise.all([fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()),fetch('
       if(o.length){app.append(el('<h2>Postados recentemente</h2>'));lista(o,app)}
       app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));return}
   }
-  const q=Q.get('a');
-  if(q==='atual'||q==='ach-mwimtur0'){               // 'atual' = achadinho mais recente (sem precisar mexer no Zorcha); o código antigo também cai aqui
+  let q=Q.get('a');
+  if(q==='ach-mwimtur0')q='ach-mwmeo8wc';            // automação antiga do Zorcha (Reel do triturador) -> achadinho desse Reel
+  if(q==='atual'){               // 'atual' = achadinho mais recente (sem precisar mexer no Zorcha); o código antigo também cai aqui
     const ac=A.filter(a=>/^ach-/.test(a.id)&&a.postado).sort((x,y)=>y.postado.localeCompare(x.postado));
     if(ac.length){
       sub.textContent='Toque no produto do vídeo que você viu';
