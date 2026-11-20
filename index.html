@@ -26,6 +26,7 @@ a.voltar{display:inline-block;color:var(--mut);text-decoration:none;font-size:14
 .cupom{display:block;background:#142055;border:1px dashed #5b6bd6;border-radius:14px;padding:12px 14px;margin:8px 0;color:#fff;text-decoration:none;font-weight:700}
 .cupom small{display:block;font-weight:500;opacity:.8;margin-top:2px}
 #vazio{text-align:center;opacity:.8;margin-top:18px}
+details{margin:14px 0}summary{cursor:pointer;color:#ff7a45;font-weight:700;padding:10px 0}
 </style></head><body><main>
 <img class="logo" src="logo.png" alt="Achadinho Klebee"><h1>Achadinho Klebee</h1>
 <p class="sub" id="sub"></p>
@@ -83,12 +84,13 @@ Promise.all([fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()),fetch('
       app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));return}
   }
   let q=Q.get('a');
-  if(q==='ach-mwimtur0')q='ach-mwmeo8wc';            // automação antiga do Zorcha (Reel do triturador) -> achadinho desse Reel
-  if(q==='atual'){               // 'atual' = achadinho mais recente (sem precisar mexer no Zorcha); o código antigo também cai aqui
+  if(q==='ach-mwimtur0')q='atual';                  // link antigo do Zorcha passa a valer como 'atual'
+  if(q==='atual'){                                  // achadinho mais recente; os 2 anteriores ficam recolhidos
     const ac=A.filter(a=>/^ach-/.test(a.id)&&a.postado).sort((x,y)=>y.postado.localeCompare(x.postado));
     if(ac.length){
       sub.textContent='Toque no produto do vídeo que você viu';
-      ac.slice(0,1).forEach((a,i)=>{app.append(el('<h2>'+(i?'Achadinho anterior: ':'🔥 Mais recente: ')+(a.titulo||'')+'</h2>'));lista(a.itens,app)});
+      app.append(el('<h2>🔥 '+(ac[0].titulo||'Achadinho')+'</h2>'));lista(ac[0].itens,app);
+      ac.slice(1,3).forEach(a=>{const d=el('<details><summary>Viu outro vídeo? '+(a.titulo||'Achadinho anterior')+'</summary></details>');lista(a.itens,d);app.append(d)});
       app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));return}
   }
   const sel=(q&&A.find(x=>x.id===q))||A[0];
