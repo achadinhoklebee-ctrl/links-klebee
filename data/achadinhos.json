@@ -1,6 +1,55 @@
 {
  "achadinhos": [
   {
+   "id": "ach-mwmeo8wc",
+   "titulo": "6 achados que você vai querer",
+   "itens": [
+    {
+     "nome": "Limpador A Vapor",
+     "link": "https://s.shopee.com.br/1BO31sp3R7",
+     "imagem": "https://cf.shopee.com.br/file/sg-11134201-825aq-mqe98q5hzu2pcc",
+     "nicho": "casa",
+     "itemId": "58263882023"
+    },
+    {
+     "nome": "Triturador Elétrico",
+     "link": "https://s.shopee.com.br/6L69BNVNxc",
+     "imagem": "https://cf.shopee.com.br/file/sg-11134201-825ao-mv2arkdryolib0",
+     "nicho": "casa",
+     "itemId": "58253167237"
+    },
+    {
+     "nome": "Selador De Embalagem",
+     "link": "https://s.shopee.com.br/114cpZu5Ye",
+     "imagem": "https://cf.shopee.com.br/file/br-11134207-81ztc-mito4deu7jeq44",
+     "nicho": "casa",
+     "itemId": "58202696910"
+    },
+    {
+     "nome": "Banho De Pés Elétrico",
+     "link": "https://s.shopee.com.br/gRmQxvMFf",
+     "imagem": "https://cf.shopee.com.br/file/br-11134207-820m4-moplk1hnnbb445",
+     "nicho": "casa",
+     "itemId": "26244908895"
+    },
+    {
+     "nome": "Cafeteira Portátil",
+     "link": "https://s.shopee.com.br/1C5dk2QtO",
+     "imagem": "https://cf.shopee.com.br/file/sg-11134201-81zth-mn0dh5ki1tzc69",
+     "nicho": "casa",
+     "itemId": "47206318088"
+    },
+    {
+     "nome": "Descongelador",
+     "link": "https://s.shopee.com.br/50alavjGE8",
+     "imagem": "https://cf.shopee.com.br/file/br-11134207-820l4-mtqc5s9r4lc00a",
+     "nicho": "casa",
+     "itemId": "58269324841"
+    }
+   ],
+   "postado": "2026-11-19T21:08-03:00"
+  },
+  {
    "id": "avulso-261118042730-a1b5",
    "titulo": "Remove Manchas de Chuva Automotivo Limpador de Vidros Box Blindex Desembaçador Concentrado Vênus Car 200ml",
    "itens": [
@@ -598,7 +647,8 @@
      "nicho": "carro",
      "itemId": "50056562898"
     }
-   ]
+   ],
+   "postado": "2026-11-17T00:00-03:00"
   }
  ]
 }
