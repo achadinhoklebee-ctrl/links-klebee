@@ -87,7 +87,7 @@ Promise.all([fetch('data/achadinhos.json?'+Date.now()).then(r=>r.json()),fetch('
     const ac=A.filter(a=>/^ach-/.test(a.id)&&a.postado).sort((x,y)=>y.postado.localeCompare(x.postado));
     if(ac.length){
       sub.textContent='Toque no produto do vídeo que você viu';
-      ac.slice(0,3).forEach((a,i)=>{app.append(el('<h2>'+(i?'Achadinho anterior: ':'🔥 Mais recente: ')+(a.titulo||'')+'</h2>'));lista(a.itens,app)});
+      ac.slice(0,1).forEach((a,i)=>{app.append(el('<h2>'+(i?'Achadinho anterior: ':'🔥 Mais recente: ')+(a.titulo||'')+'</h2>'));lista(a.itens,app)});
       app.append(el('<a class="mais" href="?nichos"><img src="logo.png" alt=""><span>VEJA OUTROS PRODUTOS</span></a>'));return}
   }
   const sel=(q&&A.find(x=>x.id===q))||A[0];
