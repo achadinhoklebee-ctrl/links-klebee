@@ -1,6 +1,55 @@
 {
  "achadinhos": [
   {
+   "id": "ach-nat3",
+   "titulo": "Até o Papai Noel surtou: 6 achados de Natal",
+   "itens": [
+    {
+     "nome": "LUZES SMART PARA ÁRVORE",
+     "link": "https://s.shopee.com.br/AAIxymbc1I",
+     "imagem": "capas/ach-nat3-1.jpg",
+     "nicho": "natal",
+     "itemId": "42835110210"
+    },
+    {
+     "nome": "VILA DE NATAL ILUMINADA",
+     "link": "https://s.shopee.com.br/2VtWqqA21n",
+     "imagem": "capas/ach-nat3-2.jpg",
+     "nicho": "natal",
+     "itemId": "58270525176"
+    },
+    {
+     "nome": "BONECO DE NEVE COM LUZES",
+     "link": "https://s.shopee.com.br/1qdq46ddUP",
+     "imagem": "capas/ach-nat3-3.jpg",
+     "nicho": "natal",
+     "itemId": "45219473249"
+    },
+    {
+     "nome": "MEIAS DE NATAL",
+     "link": "https://s.shopee.com.br/7VICp0jXjg",
+     "imagem": "capas/ach-nat3-4.jpg",
+     "nicho": "natal",
+     "itemId": "41334151060"
+    },
+    {
+     "nome": "FLORES DE NATAL",
+     "link": "https://s.shopee.com.br/BVc5deFMm",
+     "imagem": "capas/ach-nat3-5.jpg",
+     "nicho": "natal",
+     "itemId": "46716892371"
+    },
+    {
+     "nome": "LUZ SOLAR DE NATAL",
+     "link": "https://s.shopee.com.br/5AuI2yDFLD",
+     "imagem": "capas/ach-nat3-6.jpg",
+     "nicho": "natal",
+     "itemId": "22494435635"
+    }
+   ],
+   "postado": "2026-11-23T19:30-03:00"
+  },
+  {
    "id": "avulso-261118041954-1e7b",
    "titulo": "Kit Colmeia Organizadora de gavetas/Guarda Roupa P, M, G e GG - Maison Plus",
    "itens": [
