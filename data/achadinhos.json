@@ -1,6 +1,55 @@
 {
  "achadinhos": [
   {
+   "id": "ach-malandro",
+   "titulo": "Não seja o otário da história",
+   "itens": [
+    {
+     "nome": "Gaseificador de Água",
+     "link": "https://s.shopee.com.br/1BOADEODEB",
+     "imagem": "capas/ach-malandro-1.jpg",
+     "nicho": "casa",
+     "itemId": "1"
+    },
+    {
+     "nome": "Barbeador 7 Cabeças",
+     "link": "https://s.shopee.com.br/9zzYlw7yVN",
+     "imagem": "capas/ach-malandro-2.jpg",
+     "nicho": "beleza",
+     "itemId": "2"
+    },
+    {
+     "nome": "Depilador Luz Pulsada",
+     "link": "https://s.shopee.com.br/3LSeo6Oc4q",
+     "imagem": "capas/ach-malandro-3.jpg",
+     "nicho": "beleza",
+     "itemId": "3"
+    },
+    {
+     "nome": "Tapete Aquecedor de Comida",
+     "link": "https://s.shopee.com.br/8pnbNEdgWc",
+     "imagem": "capas/ach-malandro-4.jpg",
+     "nicho": "casa",
+     "itemId": "4"
+    },
+    {
+     "nome": "Mini Secadora Portátil",
+     "link": "https://s.shopee.com.br/9AQRkLevI1",
+     "imagem": "capas/ach-malandro-5.jpg",
+     "nicho": "casa",
+     "itemId": "5"
+    },
+    {
+     "nome": "Bolsa para Garrafa",
+     "link": "https://s.shopee.com.br/4VecCW4VNU",
+     "imagem": "capas/ach-malandro-6.jpg",
+     "nicho": "casa",
+     "itemId": "6"
+    }
+   ],
+   "postado": "2026-11-24T20:30-03:00"
+  },
+  {
    "id": "avulso-261123005858-ff53",
    "titulo": "Kit Unha Gel Completo Lixadeira Elétrica Cabine Sun 5  Alongamento Unhas Tips Copo Dappen Fibra Prep",
    "itens": [
