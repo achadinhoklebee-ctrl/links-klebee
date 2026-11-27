@@ -1,6 +1,55 @@
 {
   "achadinhos": [
     {
+      "id": "ach-dia5",
+      "titulo": "Black Friday pra quem só recebe dia 5",
+      "itens": [
+        {
+          "nome": "ANEL INTELIGENTE DE MONITORAMENTO",
+          "link": "https://s.shopee.com.br/4qHWiOBsvZ",
+          "imagem": "capas/ach-dia5-1.jpg",
+          "nicho": "tecnologia",
+          "itemId": "1"
+        },
+        {
+          "nome": "SABONETEIRA COM SENSOR INFRAVERMELHO",
+          "link": "https://s.shopee.com.br/50awuSGtdE",
+          "imagem": "capas/ach-dia5-2.jpg",
+          "nicho": "casa",
+          "itemId": "2"
+        },
+        {
+          "nome": "ALAXE 5ª GERAÇÃO",
+          "link": "https://s.shopee.com.br/6VPkimcPYG",
+          "imagem": "capas/ach-dia5-3.jpg",
+          "nicho": "tecnologia",
+          "itemId": "3"
+        },
+        {
+          "nome": "SANDUICHEIRA & GRILL KAZA+",
+          "link": "https://s.shopee.com.br/5VXDWGWr2p",
+          "imagem": "capas/ach-dia5-4.jpg",
+          "nicho": "casa",
+          "itemId": "4"
+        },
+        {
+          "nome": "ESCOVA DE LIMPEZA DE CALÇADOS",
+          "link": "https://s.shopee.com.br/1LheXIwxNY",
+          "imagem": "capas/ach-dia5-5.jpg",
+          "nicho": "casa",
+          "itemId": "5"
+        },
+        {
+          "nome": "RECEPTOR/ADAPTADOR DE BLUETOOTH",
+          "link": "https://s.shopee.com.br/5fqeHyL6Ch",
+          "imagem": "capas/ach-dia5-6.jpg",
+          "nicho": "tecnologia",
+          "itemId": "6"
+        }
+      ],
+      "postado": "2026-11-27T14:00-03:00"
+    },
+    {
       "id": "ach-bf",
       "titulo": "Black Friday: Papai Noel esqueceu até o Natal",
       "itens": [
